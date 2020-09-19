@@ -1,0 +1,27 @@
+{
+  "name": "mongo-starter",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "dev": "env-cmd -f ./config/dev.env nodemon index.js",
+    "prod": "node index.js"
+  },
+  "author": "byron dunkley",
+  "license": "ISC",
+  "dependencies": {
+    "express": "^4.17.1",
+    "express-mongo-sanitize": "^2.0.0",
+    "helmet": "^4.1.1",
+    "mongodb": "^3.6.2",
+    "morgan": "^1.10.0",
+    "xss-clean": "^0.1.1"
+  },
+  "devDependencies": {
+    "env-cmd": "^10.1.0",
+    "eslint": "^7.9.0",
+    "eslint-config-airbnb-base": "^14.2.0",
+    "eslint-plugin-import": "^2.22.0",
+    "nodemon": "^2.0.4"
+  }
+}
