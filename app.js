@@ -1,6 +1,7 @@
 const express = require('express');
 const expressMongoSanitize = require('express-mongo-sanitize');
 const helmet = require('helmet');
+const morgan = require('morgan');
 
 const app = express();
 
