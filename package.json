@@ -5,6 +5,7 @@
   "main": "index.js",
   "scripts": {
     "dev": "env-cmd -f ./config/dev.env nodemon index.js",
+    "test": "env-cmd -f ./config/test.env nodemone index.js",
     "prod": "node index.js"
   },
   "author": "byron dunkley",
