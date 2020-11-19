@@ -1,14 +1,17 @@
 const process = require('process');
 const app = require('./app');
+const shutdown = require('./util/shutdown');
 
 const port = process.env.PORT || 3000;
 
 const server = app.listen(port, () => console.log(`Server is running on ${port}`));
 
-process.on('SIGTERM', () => {
-  console.info('SIGTERM signal has been received');
-  server.close(() => {
-    console.log('please close');
-    // can be used to kill database here
-  });
+const exitHandler = shutdown(server, {
+  coredump: false,
+  timeout: 500,
 });
+
+process.on('uncaughtException', exitHandler(1, 'Unexpected Error'));
+process.on('unhandledRejection', exitHandler(1, 'Unhandled Promisw'));
+process.on('SIGTERM', exitHandler(0, 'SIGTERM'));
+process.on('SIGINT', exitHandler(0, 'SIGINT'));
