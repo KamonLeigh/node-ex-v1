@@ -2,6 +2,7 @@ const express = require('express');
 const expressMongoSanitize = require('express-mongo-sanitize');
 const helmet = require('helmet');
 const morgan = require('morgan');
+const testRouter = require('./routers/health');
 
 const app = express();
 
@@ -13,5 +14,8 @@ app.use(helmet());
 
 // prevents client sending script to run in db
 app.use(expressMongoSanitize());
+app.use(express.json());
+
+app.use(testRouter);
 
 module.exports = app;
